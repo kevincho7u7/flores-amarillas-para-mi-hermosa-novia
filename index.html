@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <title>PARA LA MEJOR NOVIA DEL MUNDO</title>
+    
+    <style>
+  * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+  }
+
+  body {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    background-color: #f3e5f5; /* ← Fondo morado claro */
+  }
+
+  .container {
+    width: 300px;
+    text-align: center;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+    border-radius: 12px; /* ← Opcional: le da esquinas redondeadas al cuadro */
+  }
+
+  .container h2 {
+    font-size: 1.7rem;
+    color: #4a148c; /* ← Texto del título en morado oscuro */
+  }
+
+  .input-display {
+    text-align: center;
+    margin: 10px 0;
+    font-size: 30px;
+    color: #4a148c; /* ← Puntos de la clave en morado oscuro */
+  }
+
+  .keypad {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+
+  .keypad button {
+    padding: 15px;
+    font-size: 25px;
+    background-color: #e1bee7; /* ← Botones en color morado */
+    color: #4a148c; /* ← Número del botón en morado oscuro */
+    border: 1px solid #ba68c8; /* ← Borde morado elegante */
+    border-radius: 8px; /* ← Esquinas suavizadas para los botones */
+    outline: none;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  .key:hover {
+    background-color: #ce93d8; /* ← Morado más oscuro al pasar el cursor */
+  }
+
+  .keypad button:last-child {
+    grid-column: 2/3;
+  }
+</style>
+  </head>
+  <body>
+    <div class="container">
+      <h2>
+        🔒<br />
+        Ingrese la contraseña
+      </h2>
+      <div class="input-display" id="inputDisplay">••••</div>
+      <div class="keypad">
+        <button class="key" onclick="enterDigit('1')">1</button>
+        <button class="key" onclick="enterDigit('2')">2</button>
+        <button class="key" onclick="enterDigit('3')">3</button>
+        <button class="key" onclick="enterDigit('4')">4</button>
+        <button class="key" onclick="enterDigit('5')">5</button>
+        <button class="key" onclick="enterDigit('6')">6</button>
+        <button class="key" onclick="enterDigit('7')">7</button>
+        <button class="key" onclick="enterDigit('9')">9</button>
+        <button class="key" onclick="enterDigit('8')">8</button>
+        <button class="key" onclick="enterDigit('0')">0</button>
+       <button class="key" onclick="deleteLastDigit()">⌫</button>  
+      </div>
+    </div>
+<script>
+  const correctPassword = "1605";
+  const display = document.getElementById("inputDisplay");
+  let input = "";
+
+  function enterDigit(digit) {
+    if (input.length < 4) {
+      input += digit;
+    }
+    display.textContent = input.padEnd(4, "•");
+    if (input.length === 4) {
+      if (input === correctPassword) {
+        window.location.href = "flower.html";
+      } else {
+        alert("Contraseña incorrecta, intenta de nuevo");
+        input = "";
+        display.textContent = "••••";
+      }
+    }
+  }
+
+  
+  function deleteLastDigit() {
+  input = input.slice(0, -1);
+  display.textContent = input.padEnd(4, "•");
+}
+</script>
+    </script>
+  </body>
+</html>
